@@ -288,13 +288,13 @@ class MailAlerts extends Module
 				else
 					$customization_text = preg_replace('/---<br \/>$/', '', $customization_text);
 			}
-
+			$link = new Link();
+			$product_link = $link->getProductLink($product['product_id']);
 			$items_table .=
 				'<tr style="background-color:'.($key % 2 ? '#DDE2E6' : '#EBECEE').';">
 					<td style="padding:0.6em 0.4em;">'.$product['product_reference'].'</td>
 					<td style="padding:0.6em 0.4em;">
-						<strong>'
-							.$product['product_name']
+						<strong><a href="'.$product_link.'">'.$product['product_name'].'</a>'
 							.(isset($product['attributes_small']) ? ' '.$product['attributes_small'] : '')
 							.(!empty($customization_text) ? '<br />'.$customization_text : '')
 						.'</strong>
